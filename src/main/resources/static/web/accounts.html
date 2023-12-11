@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tus cuentas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="bg-gray-100">
+    <header class="text-center py-4">
+        <nav class="flex justify-center items-center bg-gray-200">
+            <ul class="flex justify-between space-x-5 text-2xl font-bold items-center">
+                <li class="underline">Accounts</li>
+                <li class="underline">Cards</li>
+                <div class="flex-shrink-0">
+                    <div class="rounded-full overflow-hidden">
+                        <img class="w-28 h-28 object-cover" src="./images/Yellow Minimalist Round Shaped Cafe Logo.png" alt="Logo">
+                    </div>
+                </div>
+                <li class="underline">Loans</li>
+                <li class="underline">Transactions</li>
+            </ul>
+        </nav>
+    </header>
+<div id="app">
+    <section class="text-center">
+        <h1 class="text-2xl font-bold mb-4">Welcome ,{{ firstName }} {{ lastName }}!</h1>
+    </section>
+    
+    <section class="relative overflow-hidden bg-gray-200 p-2">
+        <video class="w-full h-[400px] shadow-md shadow-black object-cover" src="./images/Banner Animado Torneo Videojuegos Deportivo Dinámico Negro y Violeta.mp4" autoplay loop muted playsinline></video>
+    </section>  
+
+        <div class="max-w-4xl mx-auto my-8 p-8 bg-white rounded shadow-md">
+        
+
+        <div v-if="loading">
+            <p class="text-gray-500">Cargando...</p>
+        </div>
+        <div class="text-center">
+            <h2 class="text-2xl font-bold mb-4">My accounts</h2>
+        </div>
+        <div id="main" class="bg-gray-200 flex items-center justify-center h-screen">
+            
+            <div id="topography" class="h-full w-full flex items-center justify-center space-x-8">
+                <!-- Primera Tarjeta -->
+                <div id="credit-card-container" class="h-56 w-96 rounded-2xl bg-gradient-to-br from-pink-600 to-purple-900 group shadow-xl text-blue-200 tracking-wide font-semibold transform transition duration-500 ease-in-out rotate-0 scale-100 hover:rotate-6 hover:scale-105 hover:shadow-2xl">
+                    <div id="dots-texture" class="h-full w-full relative rounded-2xl">
+                        <div id="credit-card-body" class="absolute w-full h-full grid grid-flow-row grid-cols-3 grid-rows-7">
+                            <div class="row-span-1 col-span-3 flex flew-wrap content-center">
+                                <span class="text-lg pl-6 pt-6 w-full font-thin inline-block align-text-top text-black">Account Number</span>
+                                <span class="text-2xl font-bold italic text-right pr-6 pt-6 text-black">{{ accounts[0].number }}</span>
+                            </div>
+                            <div id="credit-card-num" class="px-6 tracking-widest row-span-3 col-span-3 w-full flex flex-wrap content-center text-black">
+                                <div contenteditable class="text-sm">{{ accounts[0].number }} &nbsp; {{ accounts[0].balance }} &nbsp; {{ accounts[0].createdAt }}</div>
+                            </div>
+                            <div id="" class="col-span-3 row-span-2 px-6 bg-gray-500 bg-opacity-20 rounded-b-2xl border-t-2 border-black w-full grid grid-cols-3 grid-rows-2 w-full text-black text-opacity-70">
+                                <div id="credit-card-name" class="tracking-widest col-span-2 self-end w-full">{{ firstName }} {{ lastName }}</div>
+                                <div id="credit-card-date" class="col-span-3 self-start text-sm">{{creationDate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Segunda Tarjeta -->
+                <div id="credit-card-container" class="h-56 w-96 rounded-2xl bg-gradient-to-br from-blue-400 to-purple-900 group shadow-xl text-blue-200 tracking-wide font-semibold transform transition duration-500 ease-in-out rotate-0 scale-100 hover:rotate-6 hover:scale-105 hover:shadow-2xl">
+                    <div id="dots-texture" class="h-full w-full relative rounded-2xl">
+                        <div id="credit-card-body" class="absolute w-full h-full grid grid-flow-row grid-cols-3 grid-rows-7">
+                            <div class="row-span-1 col-span-3 flex flew-wrap content-center">
+                                <span class="text-lg pl-6 pt-6 w-full font-thin inline-block align-text-top text-black">Account Number</span>
+                                <span class="text-2xl font-bold italic text-right pr-6 pt-6 text-black">{{ accounts[1].number }}</span>
+                            </div>
+                            <div id="credit-card-num" class="px-6 tracking-widest row-span-3 col-span-3 w-full flex flex-wrap content-center text-black">
+                                <div contenteditable class="text-sm">{{ accounts[1].number }} &nbsp; {{ accounts[1].balance }} &nbsp; {{ accounts[1].createdAt }}</div>
+                            </div>
+                            <div id="" class="col-span-3 row-span-2 px-6 bg-gray-500 bg-opacity-20 rounded-b-2xl border-t-2 border-black w-full grid grid-cols-3 grid-rows-2 w-full text-black text-opacity-70">
+                                <div id="credit-card-name" class="tracking-widest col-span-2 self-end w-full">{{ firstName }} {{ lastName }}</div>
+                                <div id="credit-card-date" class="col-span-3 self-start text-sm">{{creationDate}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<footer class="bg-gray-200 text-center py-4">
+    <p class="text-gray-600">Todos los derechos reservados © 2023</p>
+    <div class="mt-2">
+        <!-- Iconos de FontAwesome -->
+        <a href="#" class="inline-block mx-2" target="_blank">
+            <i class="fab fa-whatsapp text-lg"></i>
+        </a>
+        <a href="#" class="inline-block mx-2" target="_blank">
+            <i class="fab fa-instagram text-lg"></i>
+        </a>
+        <a href="#" class="inline-block mx-2" target="_blank">
+            <i class="fab fa-twitter text-lg"></i>
+        </a>
+    </div>
+</footer>
+
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./account.js"></script>
+
+</body>
+
+</html>

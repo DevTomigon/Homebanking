@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" class="flex flex-wrap">
+        <!-- Lado izquierdo -->
+        <div class="flex flex-col">
+            <form class="w-[500px] p-3 flex flex-col">
+                <h2 class="font-bold text-2xl text-black">Client Manager</h2>
+                <label class="text-gray-900 p-3" for="text">Firstname</label>
+                <input v-model="firstName" class="border border-gray" type="text">
+                <label class="text-gray-900 p-3" for="text">Lastname</label>
+                <input v-model="lastName" class="border border-gray" type="text">
+                <label class="text-gray-900 p-3" for="email">Email</label>
+                <input v-model="email" class="border border-gray" type="email">
+                <button class="text-white bg-green-600 mt-3 rounded-sm" @click="addClient">Add client</button>
+            </form>
+    
+            <div class="w-full mt-3"> 
+                <h2 class="font-bold text-2xl text-black p-3">Client list</h2>
+                <table class="w-full border">
+                    <thead>
+                        <tr>
+                            <th class="border p-2">Firstname</th>
+                            <th class="border p-2">Lastname</th>
+                            <th class="border p-2">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="client in clients" :key="client.id">
+                            <td class="border p-2">{{ client.firstName }}</td>
+                            <td class="border p-2">{{ client.lastName }}</td>
+                            <td class="border p-2">{{ client.email }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <!-- Lado derecho -->
+        <div class="w-full lg:w-[400px] mt-3 lg:ml-3"> 
+            <h2 class="font-bold text-2xl text-black p-3">Client REST response</h2>
+            <pre>{{data}}</pre>
+        </div>
+    </div>
+
+    <script src="/tailwind.config.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/pages/index.js"></script>
+</body>
+</html>
