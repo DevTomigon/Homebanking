@@ -1,8 +1,8 @@
-package com.mindhub.demo.controllers;
-import com.mindhub.demo.Models.Client;
-import com.mindhub.demo.Repositories.ClientRepository;
+package com.mindhub.homebanking.controllers;
+import com.mindhub.homebanking.Models.Client;
+import com.mindhub.homebanking.Repositories.ClientRepository;
 
-import com.mindhub.demo.dto.ClientDTO;
+import com.mindhub.homebanking.dto.ClientDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

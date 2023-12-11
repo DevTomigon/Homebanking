@@ -1,7 +1,7 @@
-package com.mindhub.demo.dto;
+package com.mindhub.homebanking.dto;
 
-import com.mindhub.demo.Models.Client;
-import java.util.Collections;
+import com.mindhub.homebanking.Models.Client;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

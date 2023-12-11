@@ -1,9 +1,9 @@
-package com.mindhub.demo;
+package com.mindhub.homebanking;
 
-import com.mindhub.demo.Models.Account;
-import com.mindhub.demo.Models.Client;
-import com.mindhub.demo.Repositories.AccountRepository;
-import com.mindhub.demo.Repositories.ClientRepository;
+import com.mindhub.homebanking.Models.Account;
+import com.mindhub.homebanking.Models.Client;
+import com.mindhub.homebanking.Repositories.AccountRepository;
+import com.mindhub.homebanking.Repositories.ClientRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

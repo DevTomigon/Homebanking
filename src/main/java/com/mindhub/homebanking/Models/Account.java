@@ -1,4 +1,4 @@
-package com.mindhub.demo.Models;
+package com.mindhub.homebanking.Models;
 
 import jakarta.persistence.*;
 
