@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <header class="text-center py-4">
+            <nav class="flex justify-center items-center bg-gray-200">
+                <ul class="flex justify-between space-x-5 text-2xl font-bold items-center">
+                    <li class="underline">Accounts</li>
+                    <li class="underline">Cards</li>
+                    <div class="flex-shrink-0">
+                        <div class="rounded-full overflow-hidden">
+                            <img class="w-28 h-28 object-cover"
+                                src="./images/Yellow Minimalist Round Shaped Cafe Logo.png" alt="Logo">
+                        </div>
+                    </div>
+                    <li class="underline">Loans</li>
+                    <li class="underline">Transactions</li>
+                </ul>
+                <button class="text-xl text-blue-500 pl-6">Logout</button>
+            </nav>
+        </header>
+        <section v-if="account" class="text-center">
+            <h1 class="text-2xl font-bold mb-4">Welcome, Tomas!</h1>
+        </section>
+        <div>
+            <h2 class="text-center font-bold text-2xl">{{ account.number }}</h2>
+            <div class="flex items-center justify-center">
+            <table class="w-[260px] border-collapse mt-4">
+                <thead class="bg-green-500 text-white">
+                    <tr>
+                        <th class="border p-2">Type</th>
+                        <th class="border p-2">Amount</th>
+                        <th class="border p-2">Date</th>
+                        <th class="border p-2">Description</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-gray-700 text-white">
+                    <tr v-for="transaction in transactions" :class="{'text-green-500': transaction.type === 'CREDIT', 'text-red-500': transaction.type === 'DEBIT'}">
+                        <td class="border p-2">{{ transaction.type }}</td>
+                        <td class="border p-2">{{ formatBudget(transaction.amount) }}</td>
+                        <td class="border p-2">{{ formatFechaYHora(transaction.date) }}</td>
+                        <td class="border p-2">{{ transaction.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/account.js"></script>
+</body>
+
+</html>
