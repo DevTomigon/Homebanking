@@ -20,20 +20,21 @@ public class Account {
     private Double balance;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     private List<Transactions> transactions = new ArrayList<> ();
 
-    public Account(String number , LocalDate creationDate , Double balance) {
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    private List<Card> cards = new ArrayList<>();
+
+    public Account(String number, LocalDate creationDate, Double balance) {
         this.number = number;
         this.creationDate = creationDate;
         this.balance = balance;
     }
 
     public Account() {
-
     }
 
     public Long getId() {
@@ -76,13 +77,18 @@ public class Account {
         return transactions;
     }
 
-
     public void addTransaction(Transactions transactions) {
         transactions.setAccount(this);
-        this.transactions.add ( transactions );
+        this.transactions.add(transactions);
     }
 
-    public LocalDate getCreateDate() {
-        return null;
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void addCard(Card card) {
+        this.cards.add(card);
+        card.setAccount(this);
+        card.setClient(this.client);
     }
 }

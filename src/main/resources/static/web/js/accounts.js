@@ -22,6 +22,7 @@ let app = createApp({
                     console.log("Accounts:", this.accounts);
                     this.loans = response.data.loans;
                     console.log(this.loans);
+                    
                 })
                 .catch(error => console.error(error));
         },
@@ -29,5 +30,9 @@ let app = createApp({
             const redirectUrl = `http://localhost:8080/web/account.html?id=${accountId}`;
             window.location.href = redirectUrl;
         },
+        goToDetails() {
+            window.location.href = "http://localhost:8080/web/account.html?id=1"
+        }
     },
 }).mount("#app");
+
