@@ -41,7 +41,7 @@
         <div class="md:p-4 py-2 block hover:text-purple-400"></div>
         <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection"><a href="#section-2">Accounts</a>
         </li>
-        <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection"><a href="#">Cards</a></li>
+        <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection"><a href="cards.html">Cards</a></li>
         <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection"><a href="#section-3">Loans</a></li>
         <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection"><a
             href="./account.html">Transactions</a></li>
@@ -52,13 +52,13 @@
   <div id="app">
 
     <section id="section-1" class="relative overflow-hidden mt-0 pt-0">
-      <video class="w-full h-[600px] shadow-md shadow-black object-cover" src="./images/asd.mp4" autoplay loop muted
+      <video class="w-full h-[655px] shadow-md shadow-black object-cover" src="./images/asd.mp4" autoplay loop muted
         playsinline>
       </video>
     </section>
 
     <section id="section-2" class="text-center">
-      <h1 class="text-2xl font-bold mb-4 text-black">Welcome ,{{ client.firstName }} {{ client.lastName }}!</h1>
+      <h1 class="text-2xl font-bold mb-4 text-black mt-8">Welcome ,{{ client.firstName }} {{ client.lastName }}!</h1>
 
 
       <template v-if="accounts.length > 0">
