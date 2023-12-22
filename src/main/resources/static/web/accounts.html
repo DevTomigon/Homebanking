@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body class="bg-black">
   <div id="particles-js" style="position: fixed; width: 100%; height: 100%; z-index: -1;"></div>
   <header class="text-center sticky top-0">
     <nav class="flex flex-wrap items-center justify-between w-full py-4 md:py-0 px-4 text-lg text-white bg-black mb-0">
@@ -58,10 +58,11 @@
     </section>
 
     <section id="section-2" class="text-center">
-      <h1 class="text-2xl font-bold mb-4 text-black mt-8">Welcome ,{{ client.firstName }} {{ client.lastName }}!</h1>
+      <h1 class="text-2xl font-bold mb-4 text-white mt-8">Welcome ,{{ client.firstName }} {{ client.lastName }}!</h1>
 
 
       <template v-if="accounts.length > 0">
+        <div class="flex justify-between">
         <div v-for="account in accounts" :key="account.id"
           class="max-w-4xl mx-auto bg-transparent rounded shadow-xl shadow-gray-400 mb-6 p-8">
           <div class="text-center">
@@ -70,18 +71,19 @@
 
           <div>
             <div class="mb-4">
-              <h2 class="text-2xl font-bold mb-2 text-black">My Balance</h2>
-              <p class="text-lg text-black">{{ account.balance }}</p>
+              <h2 class="text-2xl font-bold mb-2 text-white">My Balance</h2>
+              <p class="text-lg text-white">{{ account.balance }}</p>
             </div>
 
             <div class="mb-4">
-              <h2 class="text-2xl font-bold mb-2 text-black">Account Number</h2>
-              <p class="text-lg text-black">{{ account.number }}</p>
+              <h2 class="text-2xl font-bold mb-2 text-white">Account Number</h2>
+              <p class="text-lg text-white">{{ account.number }}</p>
             </div>
 
             <div>
-              <h2 class="text-2xl font-bold mb-2 text-black">Creation Date</h2>
-              <p class="text-lg text-black">{{ account.createDate }}</p>
+              <h2 class="text-2xl font-bold mb-2 text-white">Creation Date</h2>
+              <p class="text-lg text-white">{{ account.createDate }}</p>
+              
             </div>
 
 
@@ -91,12 +93,14 @@
               Go to details
             </button>
           </div>
+          
         </div>
+      </div>
       </template>
     </section>
     <div id="section-3" class="text-center bg-transparent mb-6 p-8" v-if="loans.length > 0">
-      <h2 class="text-xl font-semibold mb-4 text-black">Loan Listing</h2>
-      <table class="w-full border-collapse bg-transparent text-black shadow-md shadow-gray-700">
+      <h2 class="text-xl font-semibold mb-4 text-white">Loan Listing</h2>
+      <table class="w-full border-collapse bg-transparent text-white shadow-md shadow-gray-700">
         <thead>
           <tr class="bg-transparent">
             <th class="border py-2 px-4">Name</th>
@@ -105,7 +109,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="loan in loans" :key="loan.id" class="bg-transparent text-black">
+          <tr v-for="loan in loans" :key="loan.id" class="bg-transparent text-white">
             <td class="border py-2 px-4">{{ loan.name }}</td>
             <td class="border py-2 px-4">{{ loan.maxAmount }}</td>
             <td class="border py-2 px-4">{{ loan.payments }}</td>

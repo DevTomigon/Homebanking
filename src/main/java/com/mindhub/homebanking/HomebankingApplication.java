@@ -2,13 +2,16 @@ package com.mindhub.homebanking;
 
 import com.mindhub.homebanking.Enum.CardColor;
 import com.mindhub.homebanking.Enum.CardType;
+import com.mindhub.homebanking.Enum.RoleType;
 import com.mindhub.homebanking.Enum.TransactionType;
 import com.mindhub.homebanking.Models.*;
 import com.mindhub.homebanking.Repositories.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -21,6 +24,9 @@ public class HomebankingApplication {
 		SpringApplication.run(HomebankingApplication.class, args);
 	}
 
+	@Autowired
+	public PasswordEncoder passwordEncoder;
+
 	@Bean
 	public CommandLineRunner initData(
 			ClientRepository clientRepository,
@@ -32,13 +38,13 @@ public class HomebankingApplication {
 
 		return args -> {
 			// Crear clientes
-			Client tomas = new Client("Tomas", "Gonzalez", "tomigonzalez898@gmail.com");
-			Client maribel = new Client("Maribel", "Perez", "mariperez322@gmail.com");
+			Client tomas = new Client("Tomas", "Gonzalez", "tomigonzalez898@gmail.com", passwordEncoder.encode ( "12345" ));
+			Client maribel = new Client("Maribel", "Perez", "mariperez322@gmail.com", passwordEncoder.encode ( "12345" ));
 
 			clientRepository.save(tomas);
 			clientRepository.save(maribel);
 			System.out.println("Clientes guardados");
-
+            tomas.setRole ( RoleType.ADMIN );
 			// Crear cuentas para Tomas
 			Account cuenta1Tomas = new Account("VIN001", LocalDate.now(), 5000.0);
 			Account cuenta2Tomas = new Account("VIN002", LocalDate.now().plusDays(1), 7500.0);

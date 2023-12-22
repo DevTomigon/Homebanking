@@ -11,6 +11,8 @@ public class ClientDTO {
     private final String firstName;
     private final String lastName;
     private final String email;
+
+    private final String password;
     private final List<AccountDTO> accounts;
     private final List<ClientLoanDTO> loans;
     private final List<CardDTO> cards;
@@ -20,6 +22,7 @@ public class ClientDTO {
         this.firstName = client.getFirstName();
         this.lastName = client.getLastName();
         this.email = client.getEmail();
+        this.password = client.getPassword ();
 
         this.accounts = client.getAccounts().stream()
                 .map(AccountDTO::new)
@@ -58,6 +61,7 @@ public class ClientDTO {
         return loans;
     }
 
+    public String getPassword() {return password;}
 
     public List<CardDTO> getCards() {
         return cards;

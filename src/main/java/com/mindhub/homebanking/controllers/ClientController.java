@@ -3,33 +3,62 @@ import com.mindhub.homebanking.Models.Client;
 import com.mindhub.homebanking.Repositories.ClientRepository;
 
 import com.mindhub.homebanking.dto.ClientDTO;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/clients")
 public class ClientController {
 
     @Autowired
     private ClientRepository clientRepository;
 
-    @RequestMapping("/clients")
-    public List<ClientDTO> getAllClient() {
-        return clientRepository.findAll()
-                .stream()
-                .map((Client client) -> new ClientDTO(client))
-                .collect(Collectors.toList());
+    @Autowired
+    public PasswordEncoder passwordEncoder;
+
+    @PostMapping("")
+    public ResponseEntity<String> createClient
+            (@RequestParam String firstName,
+             @RequestParam String lastName ,
+             @RequestParam String email,
+             @RequestParam String password){
+
+        if (firstName.isBlank ()) {
+            return new ResponseEntity<> ( "El nombre no puede estar vacio ", HttpStatus.FORBIDDEN );
+        }
+        if (lastName.isBlank ()) {
+            return new ResponseEntity<> ( "El apellido no puede estar vacio ", HttpStatus.FORBIDDEN );
+        }
+        if (email.isBlank ()) {
+            return new ResponseEntity<> ( "El email no puede estar vacio ", HttpStatus.FORBIDDEN );
+        }
+        if (password.isBlank ()) {
+            return new ResponseEntity<> ( "La contraseña no puede estar vacio ", HttpStatus.FORBIDDEN );
+        }
+
+        if(clientRepository.findByEmail(email) != null){
+            return new ResponseEntity<> ( "Email ya esta en uso", HttpStatus.FORBIDDEN );
+        }
+
+        Client client = new Client(firstName,lastName,email, passwordEncoder.encode ( password ));
+
+        clientRepository.save ( client );
+        return new ResponseEntity<> ( "registrado con exito pa", HttpStatus.CREATED );
     }
 
-    @RequestMapping("/clients/{id}")
-    public ClientDTO findClient(@PathVariable Long id) {
-        return new ClientDTO(clientRepository.findById(id).orElse(null));
-    }
+    @GetMapping("/current")
+    public ResponseEntity<Object> getOneClient(Authentication authentication){
 
+        Client client = clientRepository.findByEmail ( authentication.getDeclaringClass ().getName () );
+
+        return new ResponseEntity<>(client, HttpStatus.OK);
+    }
 }

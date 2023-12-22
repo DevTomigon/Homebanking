@@ -1,5 +1,7 @@
 package com.mindhub.homebanking.Models;
 import java.util.HashSet;
+
+import com.mindhub.homebanking.Enum.RoleType;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -13,7 +15,11 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String firstName, lastName, email;
+    private String firstName, lastName, email, password;
+
+    private boolean existByEmail;
+
+    private RoleType role = RoleType.CLIENT;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private Set<ClientLoan> clientLoans = new HashSet<>();
@@ -27,10 +33,11 @@ public class Client {
     public Client() {
     }
 
-    public Client(String firstName, String lastName, String email) {
+    public Client(String firstName , String lastName , String email , String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
     }
 
     // Métodos getters y setters
@@ -76,13 +83,41 @@ public class Client {
         return firstName;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getLastName() {
         return lastName;
+    }
+
+    public RoleType getRole() {
+        return role;
+    }
+
+    public void setRole(RoleType role) {
+        this.role = role;
     }
 
     public String getEmail() {
         return email;
     }
+
+
+
+    public boolean isExistByEmail() {
+        return existByEmail;
+    }
+
+    public void setExistByEmail(boolean existByEmail) {
+        this.existByEmail = existByEmail;
+    }
+
+
 
     public List<Card> getCards() {
         return cards;
