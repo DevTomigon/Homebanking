@@ -15,7 +15,7 @@ let app = createApp({
         loadClientData() {
             this.loading = true;
             
-            axios("/api/clients/2")
+            axios("/api/clients/current")
                 .then(response => {
                     this.client = response.data;
                     this.accounts = this.client.accounts;
