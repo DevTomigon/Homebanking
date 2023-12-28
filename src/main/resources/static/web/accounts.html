@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tus cuentas</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  <link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon">
 
 </head>
 
-<body class="bg-black">
+<body  id="app" class="bg-black">
   <div id="particles-js" style="position: fixed; width: 100%; height: 100%; z-index: -1;"></div>
   <header class="text-center sticky top-0">
     <nav class="flex flex-wrap items-center justify-between w-full py-4 md:py-0 px-4 text-lg text-white bg-black mb-0">
@@ -46,10 +46,10 @@
         <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection"><a
             href="./account.html">Transactions</a></li>
       </ul>
-      <button class="text-xl text-white pl-6">Logout</button>
+      <button class="text-xl text-white pl-6" @click="logout()">Logout</button>
     </nav>
   </header>
-  <div id="app">
+  <div>
 
     <section id="section-1" class="relative overflow-hidden mt-0 pt-0">
       <video class="w-full h-[655px] shadow-md shadow-black object-cover" src="./images/asd.mp4" autoplay loop muted

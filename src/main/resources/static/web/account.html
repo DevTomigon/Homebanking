@@ -13,7 +13,7 @@
         
     </head>
 
-<body>
+<body class="bg-black">
     <div id="particles-js" style="position: fixed; width: 100%; height: 100%; z-index: -1;"></div>
   <header class="text-center sticky top-0">
     <nav class="flex flex-wrap items-center justify-between w-full py-4 md:py-0 px-4 text-lg text-white bg-black mb-0"><div>
@@ -80,14 +80,14 @@
   </header>
   <div id="app">
         <section v-if="account" class="text-center">
-            <h1 class="text-2xl font-bold mb-4 mt-10 p-3 ">Welcome, Maribel Perez!</h1>
-            <h2 class="text-2xl font-bold mb-4 mt-10 underline decoration-purple-800 p-3">My transactions</h2>
+            <h1 class="text-2xl font-bold mb-4 mt-10 p-3 text-white">Welcome, Maribel Perez!</h1>
+            <h2 class="text-2xl font-bold mb-4 mt-10 underline decoration-purple-800 p-3 text-white">My transactions</h2>
         </section>
         <div>
-            <h2 class="text-center mt-10 font-bold text-2xl underline decoration-purple-800 p-3">{{ account.number }} Transactions-preview</h2>
+            <h2 class="text-center mt-10 font-bold text-2xl underline decoration-purple-800 p-3 text-white">{{ account.number }} Transactions-preview</h2>
             <div class="flex items-center justify-center">
-                <table class="text-center w-full border-collapse mt-10 mx-4 bg-white text-white shadow-md shadow-gray-700">
-                    <thead class=" text-black">
+                <table class="text-center w-full border-collapse mt-10 mx-4 bg-transparent text-white shadow-md shadow-gray-700">
+                    <thead class=" text-white">
                         <tr>
                             <th class="border p-2">Type</th>
                             <th class="border p-2">Amount</th>

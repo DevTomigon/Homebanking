@@ -1,6 +1,6 @@
 package com.mindhub.homebanking.dto;
 
-import com.mindhub.homebanking.Models.Card;
+import com.mindhub.homebanking.Enum.RoleType;
 import com.mindhub.homebanking.Models.Client;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,6 +11,8 @@ public class ClientDTO {
     private final String firstName;
     private final String lastName;
     private final String email;
+
+    private RoleType role = RoleType.CLIENT;
 
     private final String password;
     private final List<AccountDTO> accounts;
@@ -23,6 +25,7 @@ public class ClientDTO {
         this.lastName = client.getLastName();
         this.email = client.getEmail();
         this.password = client.getPassword ();
+        this.role = role;
 
         this.accounts = client.getAccounts().stream()
                 .map(AccountDTO::new)
@@ -36,6 +39,8 @@ public class ClientDTO {
                 .map(CardDTO::new)
                 .collect(Collectors.toList());
     }
+
+
 
     public Long getId() {
         return id;
@@ -55,6 +60,14 @@ public class ClientDTO {
 
     public List<AccountDTO> getAccounts() {
         return accounts;
+    }
+
+    public RoleType getRole() {
+        return role;
+    }
+
+    public void setRole(RoleType role) {
+        this.role = role;
     }
 
     public List<ClientLoanDTO> getLoans() {

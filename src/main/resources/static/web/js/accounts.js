@@ -1,3 +1,4 @@
+const LOGOUT = "/api/logout"
 const { createApp } = Vue;
 
 let app = createApp({
@@ -26,6 +27,14 @@ let app = createApp({
                 })
                 .catch(error => console.error(error));
         },
+        logout() {
+            axios.post("/api/logout")
+              .then(data => {
+                window.location.href = "/web/index.html";
+              })
+              .catch(error => console.log("Error:", error));
+          },
+
         redirectToAccount(accountId) {
             const redirectUrl = `http://localhost:8080/web/account.html?id=${accountId}`;
             window.location.href = redirectUrl;
