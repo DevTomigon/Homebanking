@@ -38,13 +38,14 @@ public class HomebankingApplication {
 
 		return args -> {
 			// Crear clientes
-			Client tomas = new Client("Tomas", "Gonzalez", "tomigonzalez898@gmail.com", passwordEncoder.encode ( "12345" ));
-			Client maribel = new Client("Maribel", "Perez", "mariperez322@gmail.com", passwordEncoder.encode ( "12345" ));
+			Client tomas = new Client("Tomas", "Gonzalez", "tomigonzalez898@gmail.com", passwordEncoder.encode("12345"));
+			Client maribel = new Client("Maribel", "Perez", "mariperez322@gmail.com", passwordEncoder.encode("12345"));
 
 			clientRepository.save(tomas);
 			clientRepository.save(maribel);
 			System.out.println("Clientes guardados");
-            tomas.setRole ( RoleType.ADMIN );
+			tomas.setRole(RoleType.ADMIN);
+
 			// Crear cuentas para Tomas
 			Account cuenta1Tomas = new Account("VIN001", LocalDate.now(), 5000.0);
 			Account cuenta2Tomas = new Account("VIN002", LocalDate.now().plusDays(1), 7500.0);
@@ -72,16 +73,18 @@ public class HomebankingApplication {
 			System.out.println("Relaciones entre clientes y cuentas actualizadas");
 
 			// Crear tarjetas
-			Card debitCardMaribel = new Card("321312312321312", 321, "12/2025", "01/2027", "Maribel Perez", CardType.DEBIT, CardColor.GOLD);
+			Card debitCardMaribel = new Card(CardColor.GOLD, CardType.DEBIT, "321312312321312", "Maribel Perez", 321, java.sql.Date.valueOf(LocalDate.of(2027, 1, 1)), java.sql.Date.valueOf(LocalDate.of(2027, 1, 1)));
 			cuenta1Maribel.addCard(debitCardMaribel);
 
-			Card creditCardMaribel = new Card("5555666677778888", 456, "12/2025", "01/2027", "Maribel Perez", CardType.CREDIT, CardColor.TITANIUM);
+			Card creditCardMaribel = new Card(CardColor.TITANIUM, CardType.CREDIT, "5555666677778888", "Maribel Perez", 456, java.sql.Date.valueOf(LocalDate.of(2025, 12, 1)), java.sql.Date.valueOf(LocalDate.of(2027, 1, 1)));
 			cuenta2Maribel.addCard(creditCardMaribel);
 
-			Card creditCardTomas = new Card("9999000011112222", 789, LocalDate.now().toString(), LocalDate.now().plusYears(5).toString(), "Tomas Gonzalez", CardType.CREDIT, CardColor.SILVER);
+			Card creditCardTomas = new Card(CardColor.SILVER, CardType.CREDIT, "9999000011112222", "Tomas Gonzalez", 789, java.sql.Date.valueOf(LocalDate.of(2025, 12, 1)), java.sql.Date.valueOf(LocalDate.of(2027, 1, 1)));
 			cuenta1Tomas.addCard(creditCardTomas);
 
-			Card debitCardTomas = new Card("1234567890123456", 987, "12/2025", "01/2027", "Tomas Gonzalez", CardType.DEBIT, CardColor.GOLD);
+			Card debitCardTomas = new Card(CardColor.GOLD, CardType.DEBIT, "1234567890123456", "Tomas Gonzalez", 987, java.sql.Date.valueOf(LocalDate.of(2025, 12, 1)), java.sql.Date.valueOf(LocalDate.of(2027, 1, 1)));
+			cuenta2Tomas.addCard(debitCardTomas);
+
 			cuenta2Tomas.addCard(debitCardTomas);
 
 			cardRepository.save(debitCardMaribel);
@@ -96,7 +99,6 @@ public class HomebankingApplication {
 			accountRepository.save(cuenta1Maribel);
 			accountRepository.save(cuenta2Maribel);
 			System.out.println("Relaciones entre cuentas y tarjetas actualizadas");
-
 
 			Loan loan1 = new Loan("Hipotecario", 500000.0, Arrays.asList(12, 24, 36, 48, 60));
 			Loan loan2 = new Loan("Personal", 100000.0, Arrays.asList(6, 12, 24));

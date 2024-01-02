@@ -5,13 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tus cuentas</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  <link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon">
+   
 
+    <!-- Style imports -->
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://kutty.netlify.app/build.css">
+  
 </head>
 
-<body  id="app" class="bg-black">
+<body class="bg-black">
+  <div id="app">
   <div id="particles-js" style="position: fixed; width: 100%; height: 100%; z-index: -1;"></div>
   <header class="text-center sticky top-0">
     <nav class="flex flex-wrap items-center justify-between w-full py-4 md:py-0 px-4 text-lg text-white bg-black mb-0">
@@ -43,8 +47,9 @@
         </li>
         <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection"><a href="cards.html">Cards</a></li>
         <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection"><a href="#section-3">Loans</a></li>
-        <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection"><a
-            href="./account.html">Transactions</a></li>
+        <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection">
+          <a href="#">Transactions</a>
+       </li>
       </ul>
       <button class="text-xl text-white pl-6" @click="logout()">Logout</button>
     </nav>
@@ -56,10 +61,11 @@
         playsinline>
       </video>
     </section>
-
+    
+    
     <section id="section-2" class="text-center">
-      <h1 class="text-2xl font-bold mb-4 text-white mt-8">Welcome ,{{ client.firstName }} {{ client.lastName }}!</h1>
-
+      <h1 class="text-2xl font-bold mb-4 text-white mt-8">Welcome ,{{ client.firstName }} {{ client.lastName }}! </h1> 
+      <button @click="crearCuenta" class="bg-purple-950 rounded-lg font-bold text-white">Añadir nueva cuenta</button>
 
       <template v-if="accounts.length > 0">
         <div class="flex justify-between">
@@ -136,14 +142,14 @@
       </a>
     </div>
   </footer>
+  </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.polyfills.min.js"></script>
   <script src="../particles.min.js"></script>
   <script src="./js/app.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="https://unpkg.com/vue@3"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./js/accounts.js"></script>
-
 </body>
 
 </html>

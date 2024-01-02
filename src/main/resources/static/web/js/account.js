@@ -5,6 +5,7 @@ const app = createApp({
         return {
             transactions: [],
             account: {},
+            id: null,
         };
     },
     created() {
@@ -15,10 +16,12 @@ const app = createApp({
     },
     methods: {
         loadData() {
-            axios.get("/api/accounts/" + this.id)
+            axios.get("/api/clients/current")
                 .then(response => {
                     this.account = response.data
-                    this.transactions = response.data.transactions
+                    console.log(response.data);
+                    this.transactions = response.data.accounts.find(account => account.id == this.id ).transactions
+                    console.log(this.transactions);
                 })
                 .catch(error => {
                     if (error.response && error.response.status === 404) {

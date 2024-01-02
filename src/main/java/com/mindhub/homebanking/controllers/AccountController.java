@@ -42,9 +42,9 @@ public class AccountController {
 
     @PostMapping
     public ResponseEntity<String> createAccount(Authentication authentication){
-        Client client = clientRepository.findByEmail ( authentication.getName () );
+        Client client = clientRepository.findByEmailIgnoreCase ( authentication.getName () );
 
-        if (client.getAccounts ().size () >= 2) {
+        if (client.getAccounts ().size () >= 3) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN)
                     .body("Client has reached the maximum number of accounts (2)");
         }
@@ -52,13 +52,14 @@ public class AccountController {
         String number;
         
         do {
-            number = "VIN-" + getRandomNumber ( 0 , 8 );
+            number = "VIN-" + getRandomNumber(10000000, 99999999);
         }while(accountRepository.existsByNumber ( number ));
 
         Account account = new Account (number, LocalDate.now (), 0.0 );
         client.addAccount ( account );
         accountRepository.save(account);
-        return new ResponseEntity<> ( "Cuenta creada con exito" + client.getFirstName (), HttpStatus.CREATED );
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Cuenta creada con éxito para " + client.getFirstName());
     }
 
     public int getRandomNumber(int min, int max) {
