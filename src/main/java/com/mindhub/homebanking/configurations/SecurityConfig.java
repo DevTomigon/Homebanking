@@ -21,7 +21,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/web/index.html", "/web/login.html", "/style.css", "/index.js", "/web/**", "/web/images/**", "/particles.min.js").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/clients", "/api/login").permitAll()
-                .requestMatchers("/api/clients/current", "/api/accounts/*", "/api/cards/*").hasAuthority("CLIENT")
+                .requestMatchers("/api/clients/current", "/api/accounts/*", "/api/cards/*", "/api/transfers").hasAuthority("CLIENT")
                 .requestMatchers("/admin/**").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/api/clients").hasAuthority("CLIENTS")
                 .anyRequest().authenticated());

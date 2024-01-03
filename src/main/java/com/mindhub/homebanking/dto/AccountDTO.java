@@ -1,7 +1,7 @@
 package com.mindhub.homebanking.dto;
 
 import com.mindhub.homebanking.Models.Account;
-import com.mindhub.homebanking.Models.Transactions;
+import com.mindhub.homebanking.Models.Transaction;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -23,7 +23,7 @@ public class AccountDTO {
         transactions = mapTransactions(account.getTransactions());
     }
 
-    private List<TransactionsDTO> mapTransactions(List<Transactions> transactions) {
+    private List<TransactionsDTO> mapTransactions(List<Transaction> transactions) {
         return transactions.stream()
                 .map(TransactionsDTO::new)
                 .collect(Collectors.toList());

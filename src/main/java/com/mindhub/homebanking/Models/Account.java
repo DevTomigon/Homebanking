@@ -23,7 +23,7 @@ public class Account {
     private Client client;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
-    private List<Transactions> transactions = new ArrayList<> ();
+    private List<Transaction> transactions = new ArrayList<> ();
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     private List<Card> cards = new ArrayList<>();
@@ -73,11 +73,11 @@ public class Account {
         this.client = client;
     }
 
-    public List<Transactions> getTransactions() {
+    public List<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void addTransaction(Transactions transactions) {
+    public void addTransaction(Transaction transactions) {
         transactions.setAccount(this);
         this.transactions.add(transactions);
     }

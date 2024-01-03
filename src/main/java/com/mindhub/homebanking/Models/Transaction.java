@@ -3,10 +3,9 @@ package com.mindhub.homebanking.Models;
 import com.mindhub.homebanking.Enum.TransactionType;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
-public class Transactions {
+public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,11 +24,11 @@ public class Transactions {
     @JoinColumn(name = "account_id")
     private Account account;
 
-    public Transactions() {
+    public Transaction() {
     }
 
 
-    public Transactions(TransactionType type, Double amount, LocalDateTime date, String description) {
+    public Transaction(TransactionType type, Double amount, LocalDateTime date, String description) {
         this.type = type;
         this.amount = amount;
         this.date = date;

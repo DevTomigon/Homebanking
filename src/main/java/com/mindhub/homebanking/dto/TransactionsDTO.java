@@ -1,8 +1,7 @@
 package com.mindhub.homebanking.dto;
 
 import com.mindhub.homebanking.Enum.TransactionType;
-import com.mindhub.homebanking.Models.Transactions;
-import jakarta.transaction.Transaction;
+import com.mindhub.homebanking.Models.Transaction;
 
 import java.time.LocalDateTime;
 
@@ -13,7 +12,7 @@ public class TransactionsDTO {
     private LocalDateTime date;
     private String description;
 
-    public TransactionsDTO(Transactions transactions){
+    public TransactionsDTO(Transaction transactions){
         id = transactions.getId();
         date = transactions.getDate();
         amount = transactions.getAmount();

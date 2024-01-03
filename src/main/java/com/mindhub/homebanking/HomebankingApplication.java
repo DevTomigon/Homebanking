@@ -126,14 +126,14 @@ public class HomebankingApplication {
 			loan3.addClientLoan(clientLoan4);
 			clientLoanRepository.save(clientLoan4);
 
-			Transactions trans1 = new Transactions(TransactionType.CREDIT, 2000.0, LocalDateTime.now(), "Crédito inicial");
-			Transactions trans2 = new Transactions(TransactionType.DEBIT, -200.0, LocalDateTime.now(), "Retiro de efectivo");
-			Transactions trans3 = new Transactions(TransactionType.CREDIT, 800.0, LocalDateTime.now(), "Depósito inicial");
-			Transactions trans4 = new Transactions(TransactionType.DEBIT, -300.0, LocalDateTime.now(), "Compra con tarjeta");
-			Transactions trans5 = new Transactions(TransactionType.CREDIT, 1000.0, LocalDateTime.now(), "Crédito inicial");
-			Transactions trans6 = new Transactions(TransactionType.DEBIT, -400.0, LocalDateTime.now(), "Retiro de efectivo");
-			Transactions trans7 = new Transactions(TransactionType.CREDIT, 1200.0, LocalDateTime.now(), "Depósito inicial");
-			Transactions trans8 = new Transactions(TransactionType.DEBIT, -500.0, LocalDateTime.now(), "Compra con tarjeta");
+			Transaction trans1 = new Transaction (TransactionType.CREDIT, 2000.0, LocalDateTime.now(), "Crédito inicial");
+			Transaction trans2 = new Transaction (TransactionType.DEBIT, -200.0, LocalDateTime.now(), "Retiro de efectivo");
+			Transaction trans3 = new Transaction (TransactionType.CREDIT, 800.0, LocalDateTime.now(), "Depósito inicial");
+			Transaction trans4 = new Transaction (TransactionType.DEBIT, -300.0, LocalDateTime.now(), "Compra con tarjeta");
+			Transaction trans5 = new Transaction (TransactionType.CREDIT, 1000.0, LocalDateTime.now(), "Crédito inicial");
+			Transaction trans6 = new Transaction (TransactionType.DEBIT, -400.0, LocalDateTime.now(), "Retiro de efectivo");
+			Transaction trans7 = new Transaction (TransactionType.CREDIT, 1200.0, LocalDateTime.now(), "Depósito inicial");
+			Transaction trans8 = new Transaction (TransactionType.DEBIT, -500.0, LocalDateTime.now(), "Compra con tarjeta");
 
 			cuenta1Tomas.addTransaction(trans1);
 			cuenta1Tomas.addTransaction(trans2);
