@@ -65,7 +65,7 @@
     
     <section id="section-2" class="text-center">
       <h1 class="text-2xl font-bold mb-4 text-white mt-8">Welcome ,{{ client.firstName }} {{ client.lastName }}! </h1> 
-      <button @click="crearCuenta" class="bg-purple-950 rounded-lg font-bold text-white">Añadir nueva cuenta</button>
+      <button @click="crearCuenta" class="bg-purple-950 rounded-lg font-bold text-white">Create new account</button>
 
       <template v-if="accounts.length > 0">
         <div class="flex justify-between">

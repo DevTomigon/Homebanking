@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis tarjetas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+
+<body class="bg-black">
+  <div id="particles-js" style="position: fixed; width: 100%; height: 100%; z-index: -1;"></div>
+
+  <!-- Header -->
+  <header class="text-center sticky top-0">
+    <nav class="flex flex-wrap items-center justify-between w-full py-4 md:py-0 px-4 text-lg text-white bg-black mb-0">
+      <!-- Logo -->
+      <div>
+        <a href="accounts.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="150" height="32.125" viewBox="0 0 150 32.125">
+            <!-- Logo SVG Code -->
+          </svg>
+        </a>
+      </div>
+      
+      <!-- Navigation Links -->
+      <ul class="navbar pt-4 text-base text-white md:flex md:justify-between md:pt-0">
+        <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection"><a href="./accounts.html">Accounts</a></li>
+        <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection"><a href="./cards.html">Cards</a></li>
+        <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection"><a href="./accounts.html">Loans</a></li>
+        <li class="md:p-4 py-2 block hover:text-purple-400 hover:active:selection"><a href="./account.html">Transactions</a></li>
+      </ul>
+      
+      <!-- Logout Button -->
+      <button class="text-xl text-white pl-6">Logout</button>
+    </nav>
+  </header>
+    <div id="app">
+    <h2 class="text-center text-white mt-10 font-bold text-xl">CREATE YOUR CARD</h2>
+        <div class="flex flex-row items-center justify-center">
+            <div class="bg-purple-950 flex rounded-3xl shadow-purple-600">
+                <form id="createCardForm" class="text-center text-3xl flex flex-col items-center pl-3">
+                <label for="cardType" class="text-white mt-20 p-3">Card Type:</label>
+                <select v-model="cardType" class="">
+                    <option value="DEBIT">Debit</option>
+                    <option value="CREDIT">Credit</option>
+                </select>
+        
+                <label for="cardColor" class="text-white mt-20 p-3">Card Color:</label>
+                <select v-model="cardColor" class="">
+                    <option value="SILVER">Silver</option>
+                    <option value="GOLD">Gold</option>
+                    <option value="TITANIUM">Titanium</option>
+                </select>
+        
+                <button class="mt-3 bg-purple-800 p-3 mb-2 rounded-3xl text-white" @click.prevent="createCard">Create card</button>
+            </form>
+            <img class="h-[300px]" src="./images/sprites/spriteastronauta.png" alt=""></div>
+            </div>
+    
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <script src="https://unpkg.com/vue@3"></script> 
+    <script src="../particles.min.js"></script> 
+    <script src="./js/app.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="./js/create-cards.js"></script>
+</body>
+</html>
